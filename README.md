@@ -6,7 +6,7 @@
  The question begins with asking us what port with a web application listening is open on the machine.
  to know that we have to  run **rustscan** on the **machine_ip**  then we get a list of open ports 
  write the next line in your terminal to create the scan "rustscan -a machine_ip --ulimit 3000"
- **after we create the scan we found that: 
+ **after we create the scan we found that:** 
 ````
 
 PORT      STATE SERVICE  VERSION
