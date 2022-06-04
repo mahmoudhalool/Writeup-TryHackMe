@@ -3,7 +3,8 @@
 **URl: <font color="&#x1F4D8;"> https://tryhackme.com/room/frankandherby </font>
 
 # Task 1 "Frank & Herb Make an App!"
- The question begins with asking us what port with a web application listening is open on the machine.
+ # 1st question
+ The question begins asking us what port with a web application listening is open on the machine.
  to know that we have to  run **rustscan** on the **machine_ip**  then we get a list of open ports 
  write the next line in your terminal to create the scan "rustscan -a machine_ip --ulimit 3000"
  **after we create the scan we found that:** 
@@ -18,3 +19,19 @@ PORT      STATE SERVICE  VERSION
 32000/tcp open  unknown 
 
 ````
+If we look carefully there is only one port that fits what we need. Alternatively you can visit each of them in the browser until you find the one that connects.
+**ans :31337**
+
+ # 2nd question
+now we  will use gobuster to discover what other directories there  using the port number from 1st question
+```` gobuster -e -u  $machine_ip:31337 -w -w /usr/share/wordlists/dirb/common.txt ````
+**the output for that scan is:** 
+````
+http://machine_ip/.git-credentials
+http://machine_ip/assets
+http://machine_ip/css
+http://machine_ip/index.html
+http://machine_ip/vendor
+
+````
+after that we will curl on the first ip address:````curl $IP:31337/.git-credentials````
